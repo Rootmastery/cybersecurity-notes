@@ -10,7 +10,7 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 - [x] Pre-Security
 - [x] Cyber Security 101
 - [ ] Junior Penetration Tester
-- Notes: [`tryhackme-notes.md`](./tryhackmenotes.md)
+- Notes: [`tryhackmenotes.md`](./tryhackme/tryhackmenotes.md)
 
 ### 📜 CompTIA Security+ Prep
 - [ ] Network Security
