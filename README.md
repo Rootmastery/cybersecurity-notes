@@ -12,6 +12,11 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 - [ ] Junior Penetration Tester
 - Notes: [`tryhackmenotes.md`](./tryhackme/tryhackmenotes.md)
 
+### Linux
+- [ ] The Linux Command Line
+- [ ] Linux Basics for Hackers
+- Notes: [`linuxnotes.md`](./tryhackme/linuxnotes.md)
+
 ### 📜 CompTIA Security+ Prep
 - [ ] Network Security
 - [ ] Threats & Vulnerabilities
