@@ -15,7 +15,7 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 ### Linux
 - [ ] The Linux Command Line
 - [ ] Linux Basics for Hackers
-- Notes: [`linuxnotes.md`](./tryhackme/linuxnotes.md)
+- Notes: [`linuxnotes.md`](./linux/linuxnotes.md)
 
 ### 📜 CompTIA Security+ Prep
 - [ ] Network Security
