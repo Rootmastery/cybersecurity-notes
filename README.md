@@ -8,7 +8,7 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 
 ### 🔐 TryHackMe
 - [x] Pre-Security
-- [x] Cyber Security 101
+- [ ] Cyber Security 101
 - [ ] Junior Penetration Tester
 - Notes: [`tryhackmenotes.md`](./tryhackme/tryhackmenotes.md)
 
