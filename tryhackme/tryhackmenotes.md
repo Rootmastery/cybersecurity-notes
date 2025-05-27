@@ -6,6 +6,6 @@ This file contains my notes from the TryHackMe learning paths I've worked throug
 
 ## Cyber Security 101 Learning Path
 
-### Networking Core Protocols
+### [`Networking Core Protocols'](./tryhackme/networking_core_protocols.md)
 Learn about the core TCP/IP Protocols
 
