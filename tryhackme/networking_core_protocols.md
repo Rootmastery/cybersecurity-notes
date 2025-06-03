@@ -26,3 +26,51 @@ Some of the commands or methods that your web browser commonly issues to the web
 #### Commands
 - nslookup (used to look up the ip address of a domain)
 - whois (provides information about the entity that registered a domain name)
+
+#### SMTP & POP3
+
+Some common SMTP commands are:
+
+HELO or EHLO initiates an SMTP session
+MAIL FROM specifies the sender’s email address
+RCPT TO specifies the recipient’s email address
+DATA indicates that the client will begin sending the content of the email message
+. is sent on a line by itself to indicate the end of the email message
+
+The SMTP server listens on TCP port 25 by default.
+
+Some common POP3 commands are:
+
+USER <username> identifies the user
+PASS <password> provides the user’s password
+STAT requests the number of messages and total size
+LIST lists all messages and their sizes
+RETR <message_number> retrieves the specified message
+DELE <message_number> marks a message for deletion
+QUIT ends the P
+
+POP3 server listens on TCP port 110 by default
+
+#### IMAP: Syncronizing Email
+
+Some common IMAP commands are:
+
+LOGIN <username> <password> authenticates the user
+SELECT <mailbox> selects the mailbox folder to work with
+FETCH <mail_number> <data_item_name> Example fetch 3 body[] to fetch message number 3, header and body.
+MOVE <sequence_set> <mailbox> moves the specified messages to another mailbox
+COPY <sequence_set> <data_item_name> copies the specified messages to another mailbox
+LOGOUT logs out
+
+The IMAP server listens on TCP port 143 by default
+
+| Protocol | Transport Protocol | Default Port Number |
+|----------|--------------------|----------------------|
+| TELNET   | TCP                | 23                   |
+| DNS      | UDP or TCP         | 53                   |
+| HTTP     | TCP                | 80                   |
+| HTTPS    | TCP                | 443                  |
+| FTP      | TCP                | 21                   |
+| SMTP     | TCP                | 25                   |
+| POP3     | TCP                | 110                  |
+| IMAP     | TCP                | 143                  |
