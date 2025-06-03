@@ -9,3 +9,5 @@ This file contains my notes from the TryHackMe learning paths I've worked throug
 ### [Networking Core Protocols](./networking_core_protocols.md) 
 Learn about the core TCP/IP Protocols
 
+### [Networking Secure Protocols](./networking_secure_protocols.md) 
+Learn how TLS, SSH, and VPN can secure your network traffic.
