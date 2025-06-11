@@ -28,8 +28,6 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 ## 🧪 Personal Labs & Projects
 | Project | Description |
 |--------|-------------|
-| `port-scanner.py` | Basic Python port scanner script |
-| `nmap-cheatsheet.md` | Handy reference for common Nmap flags |
 | [`home-network-project.md`](./projects/home-network-project.md) | Privacy-hardened home network with OPNsense + Mullvad |
 | _More coming soon..._ |
 
