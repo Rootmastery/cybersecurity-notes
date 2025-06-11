@@ -12,37 +12,27 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 - [ ] Junior Penetration Tester
 - Notes: [`tryhackmenotes.md`](./tryhackme/tryhackmenotes.md)
 
+### 🐧 Linux
+- [ ] The Linux Command Line
+- [ ] Linux Basics for Hackers
+- Notes: [`linuxnotes.md`](./linux/linuxnotes.md)
+
 ### 📜 CompTIA Security+ Prep
 - [ ] Network Security
 - [ ] Threats & Vulnerabilities
 - [ ] Risk Management
+- Notes: _coming soon_
 
 ---
 
-#### 🔧 Home Network Privacy Project
-**Description:** Redesigned my home network to route all traffic through a VPN gateway and prepare for IoT segmentation.
+## 🧪 Personal Labs & Projects
+| Project | Description |
+|--------|-------------|
+| `port-scanner.py` | Basic Python port scanner script |
+| `nmap-cheatsheet.md` | Handy reference for common Nmap flags |
+| [`home-network-project.md`](./projects/home-network-project.md) | Privacy-hardened home network with OPNsense + Mullvad |
+| _More coming soon..._ |
 
-**Key Components:**
-- **ISP:** Bell GigaHub with fiber connection.
-- **VPN Gateway:** Protectli Vault running OPNsense, configured to route all traffic through Mullvad VPN.
-- **Network Architecture:**
-  - OPNsense box connected directly to Bell router.
-  - POE switch downstream feeding internal devices.
-  - Two TP-Link EAP225 access points providing Wi-Fi via mesh setup.
-- **DNS Privacy:** Resolved DNS leaks caused by browser-level "secure DNS" features; forced compliance with Mullvad's DNS.
-- **IoT Segmentation:** (In progress) Planning VLAN-based separation of smart home devices (e.g. Alexa, smart plugs, Wi-Fi chicken door) from personal computing devices.
-
-**Challenges Overcome:**
-- Initial incompatibility between access points and Bell router.
-- DNS leak troubleshooting due to conflicting secure DNS settings.
-- Manual setup of controller software for Omada APs.
-
-**Next Steps:**
-- Replace unmanaged POE switch with managed one to support VLANs.
-- Set up Pi-hole and Unbound for local DNS filtering.
-- Map MAC addresses to known devices for clarity and control.
-
-#### **Skills Applied:** Network architecture, VPN configuration, firewall rules, secure DNS, Wi-Fi mesh setup, troubleshooting, documentation.
 ---
 
 ## 🚧 Ongoing Goals
