@@ -42,7 +42,7 @@ Welcome to my cybersecurity learning repository. This is a living document of my
 - Set up Pi-hole and Unbound for local DNS filtering.
 - Map MAC addresses to known devices for clarity and control.
 
-***Skills Applied:** Network architecture, VPN configuration, firewall rules, secure DNS, Wi-Fi mesh setup, troubleshooting, documentation.
+#### **Skills Applied:** Network architecture, VPN configuration, firewall rules, secure DNS, Wi-Fi mesh setup, troubleshooting, documentation.
 ---
 
 ## 🚧 Ongoing Goals
