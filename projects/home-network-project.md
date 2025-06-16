@@ -1,100 +1,120 @@
 # 🔧 Home Network Privacy Project
 
-A practical network security overhaul to route all home internet traffic through a hardened VPN gateway and prepare for IoT segmentation.
+A practical network security overhaul focused on privacy, control, and segmentation—routing all traffic through a hardened VPN gateway and preparing for secure IoT isolation.
 
 ---
 
 ## 🧭 Overview
 
-This project documents the architecture and configuration of a home network designed for **privacy**, **control**, and **device isolation**. It leverages open-source tools, commercial-grade access points, and a VPN gateway for persistent outbound encryption.
+This project documents the architecture and configuration of a modern home network designed for:
+
+- DNS-level ad/tracker blocking  
+- Outbound VPN tunneling  
+- IoT segmentation via VLANs  
+- Device identification and observability  
+
+The stack integrates open-source tools (OPNsense, Pi-hole), commercial-grade Wi-Fi infrastructure (TP-Link Omada), and a Protectli firewall appliance.
 
 ---
 
 ## 🛠️ Architecture
 
-**Connection Flow:**
+**Connection Flow:**  
+`Bell GigaHub (Fiber ISP modem)` →  
+`Protectli Vault (OPNsense + Mullvad VPN Gateway)` →  
+`TP-Link SG2008P (Managed PoE Switch)` →  
+• Two TP-Link EAP225s (Omada-managed mesh Wi-Fi)  
+• Hardwired clients (PC, cameras, Omada controller)  
+• Wireless clients (phones, Alexa, smart devices, etc.)
 
-1. **Bell GigaHub (Fiber ISP modem/router)** →  
-2. **Protectli Vault running OPNsense** (VPN gateway + firewall) →  
-3. **TP-Link TL-SG1005P PoE switch** →  
-4. **Two TP-Link EAP225 Access Points (Omada-managed mesh Wi-Fi)**  
-5. **Connected Devices** (personal computers, phones, smart devices, cameras, Alexa, etc.)
+**Controller Setup:**
+
+- Dedicated full-time Omada Software Controller  
+- Nearly 50 devices assigned static IPs and custom hostnames  
+- Devices categorized by type for easier management and rule enforcement  
 
 ---
 
 ## 🔐 Privacy Enhancements
 
 ### ✅ VPN Gateway (OPNsense + Mullvad)
-- Installed OPNsense on Protectli Vault
-- Configured WireGuard VPN tunnel to Mullvad
-- All outgoing traffic from LAN routes through Mullvad
-- Kill-switch rules prevent fallback to clearnet if VPN drops
+
+- WireGuard tunnel to Mullvad VPN
+- All LAN traffic routes through VPN (default deny rules + kill switch)
+- Selective routing via aliases allows exceptions (e.g., Alexa, casting devices)
 
 ### ✅ DNS Leak Prevention
-- Detected and resolved browser DNS leaks caused by "secure DNS" settings (e.g., Firefox/Chrome)
-- Forced browser DNS resolution to use Mullvad DNS servers
-- Confirmed clean VPN/DNS leak-free status using [dnsleaktest.com](https://dnsleaktest.com)
+
+- Disabled DoH/DoT in Firefox and Chrome
+- OPNsense enforces DNS resolution via Mullvad's servers
+- Verified using [dnsleaktest.com](https://www.dnsleaktest.com) and similar tools
 
 ---
 
 ## 📶 Wi-Fi Coverage & Control
 
 ### TP-Link EAP225 Mesh Setup
-- Installed two EAP225s at opposite ends of the house with Cat6 cabling to PoE switch
-- Used Omada software controller to manage APs (hosted on PC)
-- Full mesh Wi-Fi coverage across house and yard
-- Stronger signal penetration, seamless roaming
+
+- Dual EAP225s wired with Cat6 to the managed PoE switch
+- Omada software controller manages AP configuration and monitoring
+- Seamless mesh Wi-Fi throughout home and yard
+- Optimized roaming and signal tuning using Omada controller tools
 
 ---
 
-## 🧱 Network Segmentation (Planned)
+## 🧱 Network Segmentation (In Progress)
 
-### Goal: Isolate IoT from personal devices using VLANs
-- Current switch is **unmanaged** (TP-Link TL-SG1005P)
-- Plan to replace with **managed PoE switch** to:
-  - Create separate VLANs for smart devices (e.g. Alexa, chicken door, cameras)
-  - Restrict IoT access to internet-only (no LAN discovery)
-  - Improve network observability and control
+**Goal:** Isolate untrusted IoT devices from LAN
+
+- Upgraded to managed PoE switch (SG2008P)
+- VLANs planned to separate:
+  - IoT devices (e.g., smart lights, Alexa, chicken door, cameras)  
+  - Trusted personal devices  
+  - Guest network  
+- Inter-VLAN routing to be restricted with OPNsense firewall rules
 
 ---
 
 ## 🔎 Device Identification
 
 ### MAC Mapping Workflow
-- Identified and labeled devices via DHCP leases in OPNsense and Omada controller
-- Recorded MAC addresses, IPs, and device types in a centralized list
-- Helps track rogue or unknown devices, and enforce rules
+
+- Cross-referenced DHCP leases in OPNsense and Omada
+- Static IPs assigned to known devices
+- All devices logged in centralized list (MAC, IP, hostname, type)
+- Enables rogue detection and precise rule enforcement
 
 ---
 
 ## ⚠️ Challenges Encountered
 
-| Problem | Solution |
-|--------|----------|
-| EAP225s didn’t work with Bell GigaHub | Bypassed router using Protectli/OPNsense and local switch |
-| DNS leak warnings in tests | Traced to browser-level secure DNS settings; disabled and re-routed properly |
-| IoT identification overload | Manual MAC/IP identification, grouped by device type and function |
+| Problem                               | Solution                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------|
+| EAP225s failed behind Bell GigaHub   | Inserted Protectli VPN gateway with local switch; bypassed Bell router   |
+| DNS leak detection                   | Traced to browser DoH; forced DNS resolution through VPN tunnel          |
+| IoT device sprawl                    | Manual MAC mapping, grouped and labeled by type                          |
+| VPN broke Alexa/smart device access  | Implemented selective routing via aliases in OPNsense                    |
 
 ---
 
 ## 📌 Next Steps
 
-- [ ] Install managed PoE switch to support VLAN tagging
-- [ ] Implement Pi-hole + Unbound DNS resolver for local ad/tracker blocking
-- [ ] Automate device tracking and notifications for unknown connections
-- [ ] Document final firewall rule structure
+- [ ] Complete VLAN tagging across switch and wireless network  
+- [ ] Deploy Pi-hole + Unbound as internal DNS with ad/tracker filtering  
+- [ ] Set up automatic alerts for new/unknown MAC addresses  
+- [ ] Finalize and document OPNsense firewall rule structure  
+- [ ] Expand traffic visibility using Zenarmor deep packet inspection  
 
 ---
 
 ## 🧠 Skills Demonstrated
 
-- VPN tunneling (WireGuard on OPNsense)
-- Firewall rule creation and kill-switch logic
-- DNS configuration and leak detection
-- Wi-Fi mesh deployment using enterprise-grade APs
-- Home network documentation and device auditing
+- VPN tunneling (WireGuard on OPNsense)  
+- Firewall rule design and kill-switch logic  
+- Secure DNS setup and leak prevention  
+- Enterprise Wi-Fi deployment and mesh optimization  
+- Static DHCP management and MAC-based device auditing  
+- Network documentation and architecture planning  
 
----
-
-> _"Security is not a product, but a process."_  
-> — Bruce Schneier
+> "Security is not a product, but a process."  
+> — *Bruce Schneier*
